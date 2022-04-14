@@ -1,8 +1,7 @@
-import React, { FC, useContext } from "react";
-import Character from "./Character";
 import { EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
-import CharacterProps from "../utils/CharacterInterface";
+import React, { FC, useContext } from "react";
 import { CharacterContext } from "../utils/CharacterContext";
+import Character from "./Character";
 
 const CharacterList: FC = (): JSX.Element => {
   const { characters } = useContext(CharacterContext);

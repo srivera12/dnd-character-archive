@@ -1,14 +1,14 @@
-import React, { FC, useContext, useState } from "react";
 import {
-  EuiCard,
   EuiButton,
-  EuiText,
-  EuiSpacer,
+  EuiCard,
   EuiFlexGroup,
   EuiFlexItem,
+  EuiSpacer,
+  EuiText,
 } from "@elastic/eui";
-import { CharacterContext } from "../utils/CharacterContext";
+import React, { FC, useContext, useState } from "react";
 import ReactHTMLParser from "react-html-parser";
+import { CharacterContext } from "../utils/CharacterContext";
 import CharacterForm from "./CharacterForm";
 
 interface CharacterProps {

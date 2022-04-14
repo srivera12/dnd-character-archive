@@ -1,23 +1,19 @@
 import {
-  EuiForm,
-  EuiFormRow,
-  EuiFieldText,
-  EuiSelect,
   EuiButton,
   EuiCheckbox,
-  EuiTextArea,
-  EuiSuperDatePicker,
-  EuiText,
+  EuiFieldText,
   EuiFlexGroup,
   EuiFlexItem,
+  EuiForm,
+  EuiFormRow,
+  EuiSelect,
+  EuiText,
 } from "@elastic/eui";
-import React, { FC, FormEvent, useContext, useEffect, useState } from "react";
-import CharacterProps from "../utils/CharacterInterface";
-import SelectOptions from "../utils/SelectOptionInterface";
+import React, { FC, useContext, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { getClasses, getRaces } from "../utils/raceAndClassOptions";
 import { CharacterContext } from "../utils/CharacterContext";
+import { getClasses, getRaces } from "../utils/raceAndClassOptions";
 
 interface FormProps {
   createdOn?: Date;

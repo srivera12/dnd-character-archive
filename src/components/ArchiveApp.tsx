@@ -1,20 +1,16 @@
-import React from "react";
-import "../styles/App.css";
 import {
   EuiPage,
   EuiPageBody,
-  EuiPageHeader,
   EuiPageContent,
+  EuiPageHeader,
   EuiSpacer,
   EuiText,
 } from "@elastic/eui";
+import React, { useContext, useEffect } from "react";
 import CharacterList from "../components/CharacterList";
-import CharacterForm from "./CharacterForm";
-import CharacterProps from "../utils/CharacterInterface";
-import { useContext, useEffect, useState } from "react";
-import { getClasses, getRaces } from "../utils/raceAndClassOptions";
+import "../styles/App.css";
 import { CharacterContext } from "../utils/CharacterContext";
-import SelectOptions from "../utils/SelectOptionInterface";
+import CharacterForm from "./CharacterForm";
 
 function App() {
   const { characters } = useContext(CharacterContext);

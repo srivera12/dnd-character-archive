@@ -54,12 +54,6 @@ export function CharacterProvider({ children }: ContextProps) {
     window.location.reload();
   };
 
-  useEffect(() => {
-    setCharacters(
-      JSON.parse(window.localStorage.getItem("characters") as string)
-    );
-  }, []);
-
   return (
     <CharacterContext.Provider
       value={{
