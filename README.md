@@ -1,46 +1,38 @@
-# Getting Started with Create React App
+# DnD (Dungeons and Dragons) Character Archive
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple application that allows you to store ideas for DnD characters.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+There are several features in this application:
 
-### `npm start`
+### Add Characters To Archive
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Using the form below the character list, you can add a new character idea to the list. None of the fields are required, since it is possible to have an idea without being sure of all of the characteristics just yet. Simply use the 'Save Character' button when you are done. Your idea will appear on a character card at the list on the top.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Edit Characters
 
-### `npm test`
+Don't worry, whenever you decide on one of those characteristics you haven't set yet, or if you change your mind about a characteristic you did set, simply use the 'Edit Character' button near the bottom of the character card to open a form where you can edit anything you have set. Simply use the 'Save Character' button when you are done.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Delete Character Ideas
 
-### `npm run build`
+If you have changed your mind about an idea, or want to remove a character who is in use or has died, simply press the 'Delete Character' button near the bottom of the character card.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Note: this action is irreversible. Once deleted, you cannot recover your character idea.**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Clear All Saved Characters
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If for some reason you want to remove all of your character ideas, simply use the 'Clear Characters' button at the bottom of the add character form.
 
-### `npm run eject`
+**Note: this action is irreversible. Once you clear your character archive, you cannot recover any of those character ideas.**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Character Data Attributes
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+There are several characteristics that can be saved:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Character Name
+- Character Race (available options come from the [D&D 5e Api](https://www.dnd5eapi.co)), and are limited to the options from _The Player's Handbook_
+- Character Class (available options come from the [D&D 5e Api](https://www.dnd5eapi.co)), and are limited to the options from _The Player's Handbook_
+- Character Backstory, which you can write and edit with typical rich text options
+- Whether or not the character is in use
+- The date and time you created the character. This is automatically set and stored at UTC, but is displayed in your local time on the character card.
