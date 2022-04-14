@@ -8,7 +8,7 @@ There are several features in this application:
 
 ### Add Characters To Archive
 
-Using the form below the character list, you can add a new character idea to the list. None of the fields are required, since it is possible to have an idea without being sure of all of the characteristics just yet. Simply use the 'Save Character' button when you are done. Your idea will appear on a character card at the list on the top.
+Using the form below the character list, you can add a new character idea to the list. None of the fields are required, since it is possible to have an idea without being sure of all of the characteristics. Simply use the 'Save Character' button when you are done. Your idea will appear on a character card at the list on the top.
 
 ### Edit Characters
 
