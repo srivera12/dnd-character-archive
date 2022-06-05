@@ -7,7 +7,8 @@ This is a simple application that allows you to store ideas for DnD characters.
 There are just a few short steps to run this app:
 
 1. Clone the Repo <br/>
-   `git clone https://github.com/srivera12/dnd-character-archive.git cd dnd-character-archive`
+   `git clone https://github.com/srivera12/dnd-character-archive.git` <br/>
+   `cd dnd-character-archive`
 
 1. Build Front-End <br/>
    `npm run build`
