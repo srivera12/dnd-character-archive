@@ -2,9 +2,31 @@
 
 This is a simple application that allows you to store ideas for DnD characters.
 
+## Running the App
+
+There are just a few short steps to run this app:
+
+1. Clone the Repo <br/>
+   `git clone https://github.com/srivera12/dnd-character-archive.git cd dnd-character-archive`
+
+1. Build Front-End <br/>
+   `npm run build`
+
+1. Start Up MongoDB Locally
+
+1. Start Server <br/>
+   `npm run start`
+
+1. Navigate to `http://localhost:3001`<br/>
+
+All future times you access this application, you will only need to complete steps 2 - 4.
+
+<br/>
+<br/>
+
 ## Features
 
-There are several features in this application:
+This application has a variety of features:
 
 ### Add Characters To Archive
 
@@ -25,6 +47,10 @@ If you have changed your mind about an idea, or want to remove a character who i
 If for some reason you want to remove all of your character ideas, simply use the 'Clear Characters' button at the bottom of the add character form.
 
 **Note: this action is irreversible. Once you clear your character archive, you cannot recover any of those character ideas.**
+
+### Filter Characters By Their Class and Race
+
+You can access the filtering form by checking the box labeled 'Filter Characters?'. You can then filter your characters by character class and race.
 
 ## Character Data Attributes
 

@@ -1,7 +1,7 @@
-import axios from "axios";
-import selectOptions from "./SelectOptionInterface";
+import axios from 'axios';
+import selectOptions from './SelectOptionInterface';
 
-const raceUrl = "https://www.dnd5eapi.co/api/races/";
+const raceUrl = 'https://www.dnd5eapi.co/api/races/';
 
 interface dndRace {
   index: string;
@@ -10,9 +10,7 @@ interface dndRace {
 }
 
 export function getRaces(): selectOptions[] {
-  const dndRaceOptions: selectOptions[] = [
-    { value: "undecided", text: "undecided" },
-  ];
+  const dndRaceOptions: selectOptions[] = [{ value: 'Undecided', text: 'Undecided' }];
   axios.get(raceUrl).then((response) => {
     const races = response.data.results as dndRace[];
     races.forEach((race) => {
@@ -25,7 +23,7 @@ export function getRaces(): selectOptions[] {
   return dndRaceOptions;
 }
 
-const classUrl = "https://www.dnd5eapi.co/api/classes/";
+const classUrl = 'https://www.dnd5eapi.co/api/classes/';
 
 interface dndClass {
   index: string;
@@ -34,9 +32,7 @@ interface dndClass {
 }
 
 export function getClasses(): selectOptions[] {
-  const dndClassOptions: selectOptions[] = [
-    { value: "undecided", text: "undecided" },
-  ];
+  const dndClassOptions: selectOptions[] = [{ value: 'Undecided', text: 'Undecided' }];
   axios.get(classUrl).then((response) => {
     const classes = response.data.results as dndClass[];
     classes.forEach((dndClass) => {

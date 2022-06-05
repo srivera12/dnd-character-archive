@@ -8,15 +8,15 @@ import {
   EuiFormRow,
   EuiSelect,
   EuiText,
-} from "@elastic/eui";
-import React, { FC, useContext, useState } from "react";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
-import { CharacterContext } from "../utils/CharacterContext";
-import { getClasses, getRaces } from "../utils/raceAndClassOptions";
+} from '@elastic/eui';
+import axios from 'axios';
+import React, { FC, SyntheticEvent, useContext, useEffect, useState } from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import { CharacterContext } from '../utils/CharacterContext';
+import { getClasses, getRaces } from '../utils/raceAndClassOptions';
 
 interface FormProps {
-  createdOn?: Date;
   name?: string;
   backstory?: string;
   characterRace?: string;
@@ -24,6 +24,7 @@ interface FormProps {
   inUse?: boolean;
   toggleEdit?: Function;
   isEdit: boolean;
+  _id?: string;
 }
 
 const dndRaces = getRaces();
@@ -34,46 +35,44 @@ const CharacterForm: FC<FormProps> = ({
   characterRace,
   characterClass,
   backstory,
-  createdOn,
   inUse,
+  _id,
   isEdit,
   toggleEdit,
 }): JSX.Element => {
   const initialCharacterData = {
-    nameData: isEdit ? name : "",
-    raceData: isEdit ? characterRace : "",
-    dndClassData: isEdit ? characterClass : "",
-    backstoryData: isEdit ? backstory : "",
+    nameData: isEdit ? name : '',
+    raceData: isEdit ? characterRace : 'Undecided',
+    dndClassData: isEdit ? characterClass : 'Undecided',
+    backstoryData: isEdit ? backstory : '',
     inUseData: isEdit ? inUse : false,
   };
 
   const [characterData, setCharacterData] = useState(initialCharacterData);
-  const { nameData, raceData, dndClassData, backstoryData, inUseData } =
-    characterData;
+  const { nameData, raceData, dndClassData, backstoryData, inUseData } = characterData;
 
-  const { addCharacter, editCharacter, clearCharacters } =
-    useContext(CharacterContext);
+  const { addCharacter, editCharacter, clearCharacters } = useContext(CharacterContext);
 
-  const submitCharacter = () => {
+  const submitCharacter = (e: SyntheticEvent) => {
+    e.preventDefault();
     const character = {
       name: nameData,
-      createdOn: createdOn ? createdOn : new Date(),
       characterClass: dndClassData,
       characterRace: raceData,
       inUse: inUseData,
       backstory: backstoryData,
     };
     if (isEdit && editCharacter && toggleEdit) {
-      editCharacter(character);
+      editCharacter(_id, character);
       toggleEdit();
     } else if (!isEdit && addCharacter) {
       addCharacter(character);
     }
     setCharacterData({
-      nameData: "",
-      raceData: "",
-      dndClassData: "",
-      backstoryData: "",
+      nameData: '',
+      raceData: 'Undecided',
+      dndClassData: 'Undecided',
+      backstoryData: '',
       inUseData: false,
     });
   };
@@ -81,9 +80,7 @@ const CharacterForm: FC<FormProps> = ({
   return (
     <EuiForm component="form" onSubmit={submitCharacter}>
       <EuiFormRow>
-        <EuiText size="m">
-          {isEdit ? `Editing: ${name}` : "Add Character Here"}
-        </EuiText>
+        <EuiText size="m">{isEdit ? `Editing: ${name}` : 'Add Character Here'}</EuiText>
       </EuiFormRow>
       <EuiFormRow label="Character Name">
         <EuiFieldText
@@ -127,7 +124,8 @@ const CharacterForm: FC<FormProps> = ({
           id="in-use-checkbox"
           label="I'm currently using this character in a game."
           checked={inUseData}
-          onChange={() => {
+          onChange={(e) => {
+            console.log('clicked', inUseData);
             setCharacterData({ ...characterData, inUseData: !inUseData });
           }}
         />

@@ -1,32 +1,18 @@
-import {
-  EuiButton,
-  EuiCard,
-  EuiFlexGroup,
-  EuiFlexItem,
-  EuiSpacer,
-  EuiText,
-} from "@elastic/eui";
-import React, { FC, useContext, useState } from "react";
-import ReactHTMLParser from "react-html-parser";
-import { CharacterContext } from "../utils/CharacterContext";
-import CharacterForm from "./CharacterForm";
-
-interface CharacterProps {
-  createdOn: Date;
-  name: string;
-  backstory: string;
-  characterRace: string;
-  characterClass: string;
-  inUse: boolean;
-}
+import { EuiButton, EuiCard, EuiFlexGroup, EuiFlexItem, EuiSpacer, EuiText } from '@elastic/eui';
+import React, { FC, useContext, useState } from 'react';
+import ReactHTMLParser from 'react-html-parser';
+import { CharacterContext } from '../utils/CharacterContext';
+import CharacterProps from '../utils/CharacterInterface';
+import CharacterForm from './CharacterForm';
 
 const Character: FC<CharacterProps> = ({
-  createdOn,
+  createdAt,
   name,
   backstory,
   characterRace,
   characterClass,
   inUse,
+  _id,
 }): JSX.Element => {
   const { deleteCharacter } = useContext(CharacterContext);
   const [isBeingEdited, setIsBeingEdited] = useState(false);
@@ -39,11 +25,11 @@ const Character: FC<CharacterProps> = ({
     <>
       {!isBeingEdited ? (
         <EuiCard
-          title={name}
+          title={`${name}`}
           description={
             <>
               <EuiText>
-                {characterClass} {characterRace}
+                {characterRace} {characterClass}
               </EuiText>
               <EuiSpacer size="s" />
               <EuiText>{ReactHTMLParser(backstory)}</EuiText>
@@ -51,15 +37,9 @@ const Character: FC<CharacterProps> = ({
           }
           footer={
             <>
-              <EuiText>{`Created on: ${new Date(
-                createdOn
-              ).toString()}`}</EuiText>
-              <EuiText>Character {!inUse && "Not"} In Use</EuiText>
-              <EuiFlexGroup
-                gutterSize="s"
-                alignItems="center"
-                justifyContent="center"
-              >
+              <EuiText>{`Created on: ${new Date(createdAt).toLocaleString()}`}</EuiText>
+              <EuiText>Character {!inUse && 'Not'} In Use</EuiText>
+              <EuiFlexGroup gutterSize="s" alignItems="center" justifyContent="center">
                 <EuiFlexItem grow={false}>
                   <EuiButton
                     fill
@@ -76,7 +56,7 @@ const Character: FC<CharacterProps> = ({
                     fill
                     color="danger"
                     onClick={() => {
-                      deleteCharacter && deleteCharacter(createdOn);
+                      deleteCharacter && deleteCharacter(_id);
                     }}
                   >
                     Delete Character
@@ -88,7 +68,6 @@ const Character: FC<CharacterProps> = ({
         ></EuiCard>
       ) : (
         <CharacterForm
-          createdOn={createdOn}
           name={name}
           backstory={backstory}
           characterRace={characterRace}
@@ -96,6 +75,7 @@ const Character: FC<CharacterProps> = ({
           inUse={inUse}
           toggleEdit={toggleEdit}
           isEdit={true}
+          _id={_id}
         />
       )}
     </>
