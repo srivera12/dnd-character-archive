@@ -19,7 +19,7 @@ There are just a few short steps to run this app:
 
 1. Navigate to `http://localhost:3001`<br/>
 
-All future times you access this application, you will only need to complete steps 2 - 4.
+All future times you access this application, you will only need to complete steps 3 - 5.
 
 <br/>
 <br/>
